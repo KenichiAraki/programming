@@ -64,3 +64,8 @@ data = yaml.load(f)
 choices = ((ent, ent),)
 choices = ((ent, ent),) + choices
 ```  
+
+##### one line if  
+```  
+switch_ip = switch_ips[0] if len(switch_ips) >= 1 else ""
+```  
