@@ -15,6 +15,11 @@ Only top level in a top level playbook.
 - name: Execute Fabric Builder 'build'
   import_playbook: fabric-builder/build.yml
 ```
+- an inventory file (e.g. 'hosts' or -i "host,") are preprocessed, 
+thus an inventory file cannot be overriden for an imported playbook; 
+e.g. fabric-builder/hosts.
+- facts (by set_facts) are used in an imported playbook as well as vars.
+- playbook/host_vars nor group_vars are read during import.
 
 
 ### jinja2
