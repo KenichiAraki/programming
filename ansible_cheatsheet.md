@@ -1,3 +1,14 @@
+# playbook
+
+### import playbooks
+Only top level in a top level playbook.
+
+```
+- name: Execute Fabric Builder 'build'
+  import_playbook: fabric-builder/build.yml
+```
+
+
 ### jinja2
 
 ##### list variables
