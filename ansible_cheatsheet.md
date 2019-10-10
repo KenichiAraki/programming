@@ -33,3 +33,18 @@ dhcp"
 example.j2
 dhcp:
   neighbors: {{ dhcp.neighbors }}
+
+
+##### templates tips
+
+Dictionary
+
+python 3
+{% for key, value in dhcp_server.options.items() %}
+option {{ key }} {{ value }};
+{% endfor %}
+
+python 2
+{% for key, value in dhcp_server.options.iteritems() %}
+option {{ key }} {{ value }};
+{% endfor %}
