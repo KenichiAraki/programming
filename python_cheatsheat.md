@@ -14,12 +14,20 @@ Language Details
 
 ### loops
 
-``` multiple lists with zip
+``` 
+*** multiple lists with zip ***  
 letters = ['a', 'b', 'c']
 numbers = [0, 1, 2]
 for l, n in zip(letters, numbers)
 ```
-
+``` 
+*** list comprehenssion with a condition ***
+values = [expression for value in collection if condition]
+values = []
+for value in collection:
+    if condition:
+        values.append(expression)
+```
 
 ### string
 
