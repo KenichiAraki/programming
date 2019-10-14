@@ -1,3 +1,26 @@
+Python 3 vs. Python 2
+=====
+
+### zip
+python 2: returns 'list', python 3: returns 'iterator'
+
+### python 3  
+- dict = ordered collections (3.6)  
+- async: asincio/await, e.g. asincio.sleep(delay), asincio.gather()
+
+
+Language Details
+=====
+
+### loops
+
+``` multiple lists with zip
+letters = ['a', 'b', 'c']
+numbers = [0, 1, 2]
+for l, n in zip(letters, numbers)
+```
+
+
 ### string
 
 ##### json string
@@ -57,7 +80,37 @@ with open(file) as f:
 data = yaml.load(f)
 ```
 
+### Generator
+generators return a lazy iterator:
+- can loop over a list
+  + 'yield' to return the control to a caller
+  + 'next' to go back to the generator
+- contents are not stored in memory  
+
+``` Reading a large file   
+lines = (line for line in open(csv_file))
+list_line = (s.rstrip.split(",") for s in lines)
+cols = next(list_line)
+dicst = (dict(zip(cols, data)) for data in list_line)
+```  
+
+``` list vs. generator  
+nums_squard_lc = [num**2 for num in range(5)] -> list, entire list is created and stored in memory
+nums_squard_lc = (num**2 for num in range(5)) -> generator, next() generates and returns a value
+```  
+
 ### Tricks
+
+##### dictionary
+```  
+fields = ['name', 'last_name', 'age', 'job']
+values = ['John', 'Smith', '45', 'Python Developer']
+a_dict = dict(zip(fileds, values))
+
+new_job = ['Python Consultant']
+filed = ['job']
+a_dict.update(zip(field, new_job))
+```  
 
 ##### tuple of tuples  
 ```  
