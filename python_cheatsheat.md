@@ -9,7 +9,7 @@ python 2: returns 'list', python 3: returns 'iterator'
 - async: asincio/await, e.g. asincio.sleep(delay), asincio.gather()
 
 
-Language Details
+Language
 =====
 
 ### loops
@@ -74,6 +74,20 @@ SyntaxError: keyword can't be an expression
 
 ```
 
+### Arguments
+```  
+def myfunc(x, y, z):
+    print(x, y, z)
+
+tuple_vec = (1, 0, 1)
+dict_vec = {'x': 1, 'y': 0, 'z': 1}
+
+>>> myfunc(*tuple_vec)
+1, 0, 1
+
+>>> myfunc(**dict_vec)
+1, 0, 1
+```
 
 ### Files
 
