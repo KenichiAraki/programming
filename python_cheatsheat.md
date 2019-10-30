@@ -72,6 +72,20 @@ SyntaxError: keyword can't be an expression
 >>> print temp % ('Duke', 'Togo', 'black')
 {"firstname":"Duke", "lastname":"Togo", "color-eye"="black"}
 
+*** jinja and json data ***
+DEFAULT_VARS = '''
+{
+    "dhcp": {
+        "http_server": "135.121.33.251"
+    }
+}
+vars = eval(DEFAULT_VARS)
+
+template_loader = FileSystemLoader("templates")
+jinja_env = Environment(loader=template_loader)
+template = jinja_env.get_template(template_file)
+output = template.render(dhcp=vars['dhcp'])
+
 ```
 
 ### Arguments
