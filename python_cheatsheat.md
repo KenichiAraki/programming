@@ -73,6 +73,9 @@ SyntaxError: keyword can't be an expression
 {"firstname":"Duke", "lastname":"Togo", "color-eye"="black"}
 
 *** jinja and json data ***
+template.j2
+    url = '"http://{{ dhcp.http_server }}';
+
 DEFAULT_VARS = '''
 {
     "dhcp": {
