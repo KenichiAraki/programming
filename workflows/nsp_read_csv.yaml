@@ -1,0 +1,90 @@
+---
+# NSP CSV Read Example
+
+# Workflow
+version: '2.0'
+
+csvTest:
+  type: direct
+  
+  input:
+    - csv_file: 'test.csv'
+
+  tasks:
+    read_csv1:
+      action: file.read filename=<% $.csv_file %> folder='/tmp' options='raw'
+      publish:
+        raw_result: <% task().result.data %>
+      on-success:
+        - parse_csv
+
+    parse_csv:
+      action: std.echo
+      input:
+        output: <% csv_parse($.raw_result) %>
+      publish:
+        parsed_raw_result: <% task().result %>
+
+    read_csv2:
+      action: file.read filename=<% $.csv_file %> folder='/tmp'
+      publish:
+        csv_result: <% task().result.data %>
+
+
+# Test Results
+
+## CSV - comma
+name, value
+Kenichi, 100
+Araki, 101
+
+## Output
+{
+  "parsed_raw_result": [
+    {
+      "name, value": "Kenichi, 100"
+    },
+    {
+      "name, value": "Araki, 101"
+    }
+  ],
+  "raw_result": "name, value\nKenichi, 100\nAraki, 101\n\n",
+  "csv_result": [
+    {
+      "name, value": "Kenichi, 100"
+    },
+    {
+      "name, value": "Araki, 101"
+    }
+  ]
+}
+
+## CSV - semi colon
+name;value
+Kenichi;100
+Araki;101
+
+## Output
+{
+  "parsed_raw_result": [
+    {
+      "name": "Kenichi",
+      "value": "100"
+    },
+    {
+      "name": "Araki",
+      "value": "101"
+    }
+  ],
+  "raw_result": "name;value\nKenichi;100\nAraki;101\n\n",
+  "csv_result": [
+    {
+      "name": "Kenichi",
+      "value": "100"
+    },
+    {
+      "name": "Araki",
+      "value": "101"
+    }
+  ]
+}
