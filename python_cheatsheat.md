@@ -5,7 +5,8 @@ Python 3 vs. Python 2
 python 2: returns 'list', python 3: returns 'iterator'
 
 ### python 3  
-- dict = ordered collections (3.6)  
+- dict = ordered collections (3.6)
+    dict.has_key() removed use 'key' in disct
 - async: asincio/await, e.g. asincio.sleep(delay), asincio.gather()
 
 
