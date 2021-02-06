@@ -1,0 +1,21 @@
+python
+
+>>> def fib(i):
+...   if i<=2:
+...     return i
+...   x=1
+...   y=2
+...   while i-2>0:
+...     z=x+y
+...     x=y
+...     y=z
+...     i=i-1
+...   return y
+... 
+>>> fib(3)
+3
+>>> fib(4)
+5
+>>> fib(5)
+8
+
