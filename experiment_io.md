@@ -1,3 +1,10 @@
+**Basics**  
+Io> a := 1  
+==> 1  
+Io> getSlot("a")  
+==> 1  
+
+
 **Fibonacci number**
 
 Io> fib := method(i,a,b, if(i<=2, return b, return fib(i-1,b,a+b)))  
