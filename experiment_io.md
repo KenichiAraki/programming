@@ -113,3 +113,20 @@ Io> t := 0
 ==> 0  
 Io> sum(v)  
 ==> 10  
+
+**File**  
+Io> f := File with("test.dat")  
+==>  File_0x7f9144cc2830:  
+
+Io> f openForUpdating  
+==>  File_0x7f9144cc2830:  
+
+Io> w := method(l, f write("("); l foreach(n, f write(n asString); f write(",")); f write(")"))  
+==> method(l,   
+    f write("("); l foreach(n, f write(n asString); f write(",")); f write(")")  
+
+Io> w(list(1,2))  
+==>  File_0x7f9144cc2830:  
+
+Io> f close  
+==>  File_0x7f9144cc2830:  
